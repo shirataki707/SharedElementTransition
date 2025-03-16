@@ -1,4 +1,4 @@
-package jp.shirataki.sharedelementtransition.screen
+package jp.shirataki.sharedelementtransition.ui.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -17,7 +17,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import jp.shirataki.sharedelementtransition.data.Mountain
 import jp.shirataki.sharedelementtransition.data.MountainDemoDataProvider
-import jp.shirataki.sharedelementtransition.sharedElement.easySharedElement
+import jp.shirataki.sharedelementtransition.ui.sharedElement.easySharedElement
 import kotlinx.serialization.Serializable
 
 @Serializable

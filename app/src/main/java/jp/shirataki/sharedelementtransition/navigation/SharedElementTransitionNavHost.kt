@@ -11,13 +11,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import jp.shirataki.sharedelementtransition.data.Mountain
-import jp.shirataki.sharedelementtransition.screen.MountainDetailRoute
-import jp.shirataki.sharedelementtransition.screen.MountainDetailScreen
-import jp.shirataki.sharedelementtransition.screen.MountainRoute
-import jp.shirataki.sharedelementtransition.screen.MountainScreen
-import jp.shirataki.sharedelementtransition.screen.navigateToMountainDetail
-import jp.shirataki.sharedelementtransition.sharedElement.AnimatedVisibilityScopeProvider
-import jp.shirataki.sharedelementtransition.sharedElement.SharedTransitionScopeProvider
+import jp.shirataki.sharedelementtransition.ui.screen.MountainDetailRoute
+import jp.shirataki.sharedelementtransition.ui.screen.MountainDetailScreen
+import jp.shirataki.sharedelementtransition.ui.screen.MountainRoute
+import jp.shirataki.sharedelementtransition.ui.screen.MountainScreen
+import jp.shirataki.sharedelementtransition.ui.screen.navigateToMountainDetail
+import jp.shirataki.sharedelementtransition.ui.sharedElement.AnimatedVisibilityScopeProvider
+import jp.shirataki.sharedelementtransition.ui.sharedElement.SharedTransitionScopeProvider
 import kotlin.reflect.typeOf
 
 private const val animationDurationMilliSeconds = 500

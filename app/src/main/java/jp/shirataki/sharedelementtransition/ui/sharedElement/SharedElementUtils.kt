@@ -1,4 +1,4 @@
-package jp.shirataki.sharedelementtransition.sharedElement
+package jp.shirataki.sharedelementtransition.ui.sharedElement
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package jp.shirataki.sharedelementtransition.screen
+package jp.shirataki.sharedelementtransition.ui.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -25,7 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import jp.shirataki.sharedelementtransition.data.Mountain
 import jp.shirataki.sharedelementtransition.data.MountainDemoDataProvider
-import jp.shirataki.sharedelementtransition.sharedElement.easySharedElement
+import jp.shirataki.sharedelementtransition.ui.sharedElement.easySharedElement
 import kotlinx.serialization.Serializable
 
 @Serializable
