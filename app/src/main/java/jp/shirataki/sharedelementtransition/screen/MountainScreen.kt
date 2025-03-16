@@ -1,4 +1,4 @@
-package jp.shirataki.sharedelementtransition
+package jp.shirataki.sharedelementtransition.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,29 +22,43 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import jp.shirataki.sharedelementtransition.data.Mountain
+import jp.shirataki.sharedelementtransition.data.MountainDemoDataProvider
+import jp.shirataki.sharedelementtransition.sharedElement.easySharedElement
+import kotlinx.serialization.Serializable
+
+@Serializable
+data object MountainRoute
 
 @Composable
-fun MountainScreen() {
+fun MountainScreen(
+    onMountainClick: (Mountain) -> Unit,
+) {
     val mountains = MountainDemoDataProvider.provideData()
 
     LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         items(mountains) { mountain ->
-            MountainCard(mountain)
+            MountainCard(
+                mountain = mountain,
+                onMountainClick = onMountainClick,
+            )
         }
     }
 }
 
 @Composable
-private fun MountainCard(mountain: Mountain) {
+private fun MountainCard(
+    mountain: Mountain,
+    onMountainClick: (Mountain) -> Unit,
+) {
     Column(
         modifier = Modifier
             .padding(end = 32.dp)
-            .clickable(onClick = { /* TODO */ })
+            .clickable(onClick = { onMountainClick(mountain) })
     ) {
 
-        MountainImageWithIcon(mountain)
+        MountainImageWithIcon(mountain = mountain)
 
         Text(
             text = mountain.name,
@@ -64,14 +78,18 @@ private fun MountainCard(mountain: Mountain) {
 }
 
 @Composable
-private fun MountainIcon(modifier: Modifier = Modifier) {
+private fun MountainIcon(
+    mountain: Mountain,
+    modifier: Modifier = Modifier,
+) {
     Box(
         modifier = modifier
+            .easySharedElement(key = "icon-${mountain.id}")
             .size(64.dp)
             .background(Color.DarkGray)
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_landscape),
+            painter = painterResource(id = mountain.iconRes),
             contentDescription = "mountain",
             tint = Color.White,
             modifier = Modifier
@@ -90,23 +108,14 @@ private fun MountainImageWithIcon(mountain: Mountain) {
             contentDescription = mountain.name,
             contentScale = ContentScale.Crop,
             modifier = Modifier
+                .easySharedElement(key = "image-${mountain.id}")
                 .fillMaxWidth()
                 .height(200.dp)
         )
-
-        MountainIcon(modifier = Modifier.offset(x = 16.dp, y = (-32).dp))
     }
-}
 
-@Preview
-@Composable
-private fun MountainCardPreview() {
-    MountainCard(
-        Mountain(
-            name = "八ヶ岳(赤岳)",
-            area = "山梨",
-            description = "八ヶ岳連峰の主峰である赤岳は標高2,899mを誇り、登山者に人気の山。美しい稜線と絶景が楽しめ、初心者から上級者まで楽しめるコースが豊富。",
-            imageRes = R.drawable.mountain_akadake
-        )
+    MountainIcon(
+        mountain = mountain,
+        modifier = Modifier.offset(x = 16.dp, y = (-32).dp)
     )
 }
