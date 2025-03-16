@@ -15,18 +15,18 @@ object MountainDemoDataProvider {
             ),
             Mountain(
                 id = 2,
-                name = "赤城山",
-                area = "群馬",
-                description = "群馬県を代表する火山で、カルデラ湖の大沼を囲むように複数の峰が広がる。四季折々の景色が楽しめ、ハイキングや登山に適したコースが整備されている。",
-                imageRes = R.drawable.mountain_akagi,
+                name = "丹沢山",
+                area = "神奈川",
+                description = "丹沢山地の中心に位置し、標高1,567m。関東近郊で登山を楽しめる人気の山で、山頂からの展望は良好。東京からのアクセスも良く、日帰り登山に最適。",
+                imageRes = R.drawable.mountain_tanzawa,
                 iconRes = R.drawable.ic_landscape,
             ),
             Mountain(
                 id = 3,
-                name = "大菩薩嶺",
-                area = "山梨",
-                description = "標高2,057mの大菩薩嶺は富士山の眺望が素晴らしく、初心者でも比較的登りやすい山。尾根歩きが魅力で、天気が良ければ南アルプスの絶景も堪能できる。",
-                imageRes = R.drawable.mountain_daibosatsurei,
+                name = "赤城山",
+                area = "群馬",
+                description = "群馬県を代表する火山で、カルデラ湖の大沼を囲むように複数の峰が広がる。四季折々の景色が楽しめ、ハイキングや登山に適したコースが整備されている。",
+                imageRes = R.drawable.mountain_akagi,
                 iconRes = R.drawable.ic_landscape,
             ),
             Mountain(
@@ -47,12 +47,12 @@ object MountainDemoDataProvider {
             ),
             Mountain(
                 id = 6,
-                name = "丹沢山",
-                area = "神奈川",
-                description = "丹沢山地の中心に位置し、標高1,567m。関東近郊で登山を楽しめる人気の山で、山頂からの展望は良好。東京からのアクセスも良く、日帰り登山に最適。",
-                imageRes = R.drawable.mountain_tanzawa,
+                name = "大菩薩嶺",
+                area = "山梨",
+                description = "標高2,057mの大菩薩嶺は富士山の眺望が素晴らしく、初心者でも比較的登りやすい山。尾根歩きが魅力で、天気が良ければ南アルプスの絶景も堪能できる。",
+                imageRes = R.drawable.mountain_daibosatsurei,
                 iconRes = R.drawable.ic_landscape,
-            )
+            ),
         )
     }
 }
