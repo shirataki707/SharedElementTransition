@@ -34,12 +34,12 @@ fun ImageWithCategoryIcon(
                 .fillMaxWidth()
                 .height(imageHeight)
         )
-    }
 
-    CategoryIcon(
-        sharedTransitionKey = sharedTransitionCategoryKey,
-        iconRes = iconRes,
-        categoryIconSize = categoryIconSize,
-        modifier = Modifier.offset(x = 16.dp, y = (-32).dp)
-    )
+        CategoryIcon(
+            sharedTransitionKey = sharedTransitionCategoryKey,
+            iconRes = iconRes,
+            categoryIconSize = categoryIconSize,
+            modifier = Modifier.offset(x = 16.dp, y = (-32).dp)
+        )
+    }
 }
