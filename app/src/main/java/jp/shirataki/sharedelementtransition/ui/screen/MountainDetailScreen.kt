@@ -1,23 +1,25 @@
 package jp.shirataki.sharedelementtransition.ui.screen
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import jp.shirataki.sharedelementtransition.data.Mountain
-import jp.shirataki.sharedelementtransition.data.MountainDemoDataProvider
-import jp.shirataki.sharedelementtransition.ui.sharedElement.easySharedElement
+import jp.shirataki.sharedelementtransition.ui.component.ImageWithCategoryIcon
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -29,32 +31,57 @@ fun NavController.navigateToMountainDetail(mountain: Mountain, navOptions: NavOp
     navigate(route = MountainDetailRoute(mountain = mountain), navOptions = navOptions)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MountainDetailScreen(
-    mountain: Mountain = MountainDemoDataProvider.provideData().first(),
+    mountain: Mountain,
     onBackPressed: () -> Unit,
 ) {
-    Column {
-        Image(
-            painter = painterResource(id = mountain.imageRes),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {},
+                navigationIcon = {
+                    IconButton(
+                        onClick = onBackPressed,
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                }
+            )
+        }
+    ) { contentPadding ->
+        Column(
             modifier = Modifier
-                .easySharedElement(key = "image-${mountain.id}")
-                .fillMaxWidth()
-                .height(240.dp),
-        )
-        Icon(
-            painter = painterResource(id = mountain.iconRes),
-            contentDescription = null,
-            modifier = Modifier
-                .easySharedElement(key = "icon-${mountain.id}")
-                .padding(16.dp)
-                .clickable { onBackPressed() },
-        )
-        Text(
-            text = mountain.description
-        )
+                .padding(contentPadding)
+                .verticalScroll(rememberScrollState()),
+        ) {
+            Text(
+                text = mountain.name,
+                style = MaterialTheme.typography.displayMedium,
+                modifier = Modifier.padding(start = 16.dp, bottom = 32.dp)
+            )
+
+            ImageWithCategoryIcon(
+                sharedTransitionImageKey = "image-${mountain.id}",
+                sharedTransitionCategoryKey = "category-${mountain.id}",
+                imageRes = mountain.imageRes,
+                iconRes = mountain.iconRes,
+                imageHeight = 250.dp,
+                categoryIconSize = 80.dp,
+                modifier = Modifier.padding(end = 32.dp)
+            )
+
+            Text(
+                text = mountain.description,
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+
+        }
     }
 }
 
