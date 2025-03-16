@@ -20,7 +20,7 @@ import jp.shirataki.sharedelementtransition.ui.sharedElement.AnimatedVisibilityS
 import jp.shirataki.sharedelementtransition.ui.sharedElement.SharedTransitionScopeProvider
 import kotlin.reflect.typeOf
 
-private const val animationDurationMilliSeconds = 500
+private const val AnimationDurationMilliSeconds = 500
 
 @Composable
 fun SharedElementTransitionNavHost() {
@@ -47,14 +47,14 @@ fun SharedElementTransitionNavHost() {
                 enterTransition = {
                     slideInHorizontally(
                         initialOffsetX = { it },
-                        animationSpec = tween(durationMillis = animationDurationMilliSeconds)
-                    ) + fadeIn(animationSpec = tween(durationMillis = animationDurationMilliSeconds))
+                        animationSpec = tween(durationMillis = AnimationDurationMilliSeconds)
+                    ) + fadeIn(animationSpec = tween(durationMillis = AnimationDurationMilliSeconds))
                 },
                 exitTransition = {
                     slideOutHorizontally(
                         targetOffsetX = { it },
-                        animationSpec = tween(durationMillis = animationDurationMilliSeconds)
-                    ) + fadeOut(animationSpec = tween(durationMillis = animationDurationMilliSeconds))
+                        animationSpec = tween(durationMillis = AnimationDurationMilliSeconds)
+                    ) + fadeOut(animationSpec = tween(durationMillis = AnimationDurationMilliSeconds))
                 }
             ) { backStackEntry ->
                 AnimatedVisibilityScopeProvider(animatedVisibilityScope = this) {
