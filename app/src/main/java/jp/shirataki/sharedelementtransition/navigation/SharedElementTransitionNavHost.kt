@@ -1,5 +1,10 @@
 package jp.shirataki.sharedelementtransition.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,6 +19,8 @@ import jp.shirataki.sharedelementtransition.screen.navigateToMountainDetail
 import jp.shirataki.sharedelementtransition.sharedElement.AnimatedVisibilityScopeProvider
 import jp.shirataki.sharedelementtransition.sharedElement.SharedTransitionScopeProvider
 import kotlin.reflect.typeOf
+
+private const val animationDurationMilliSeconds = 500
 
 @Composable
 fun SharedElementTransitionNavHost() {
@@ -36,7 +43,19 @@ fun SharedElementTransitionNavHost() {
             composable<MountainDetailRoute>(
                 typeMap = mapOf(
                     typeOf<Mountain>() to MountainNavType,
-                )
+                ),
+                enterTransition = {
+                    slideInHorizontally(
+                        initialOffsetX = { it },
+                        animationSpec = tween(durationMillis = animationDurationMilliSeconds)
+                    ) + fadeIn(animationSpec = tween(durationMillis = animationDurationMilliSeconds))
+                },
+                exitTransition = {
+                    slideOutHorizontally(
+                        targetOffsetX = { it },
+                        animationSpec = tween(durationMillis = animationDurationMilliSeconds)
+                    ) + fadeOut(animationSpec = tween(durationMillis = animationDurationMilliSeconds))
+                }
             ) { backStackEntry ->
                 AnimatedVisibilityScopeProvider(animatedVisibilityScope = this) {
                     val mountain = backStackEntry.toRoute<MountainDetailRoute>().mountain
