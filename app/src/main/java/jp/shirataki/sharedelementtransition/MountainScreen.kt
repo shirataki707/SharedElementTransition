@@ -43,16 +43,8 @@ private fun MountainCard(mountain: Mountain) {
             .padding(end = 32.dp)
             .clickable(onClick = { /* TODO */ })
     ) {
-        Image(
-            painter = painterResource(mountain.imageRes),
-            contentDescription = mountain.name,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-        )
 
-        MountainIcon(modifier = Modifier.offset(x = 16.dp, y = (-32).dp))
+        MountainImageWithIcon(mountain)
 
         Text(
             text = mountain.name,
@@ -87,6 +79,22 @@ private fun MountainIcon(modifier: Modifier = Modifier) {
                 .align(Alignment.BottomStart)
                 .padding(8.dp),
         )
+    }
+}
+
+@Composable
+private fun MountainImageWithIcon(mountain: Mountain) {
+    Column {
+        Image(
+            painter = painterResource(mountain.imageRes),
+            contentDescription = mountain.name,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+        )
+
+        MountainIcon(modifier = Modifier.offset(x = 16.dp, y = (-32).dp))
     }
 }
 
