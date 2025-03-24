@@ -48,13 +48,13 @@ fun SharedElementTransitionNavHost() {
                     slideInHorizontally(
                         initialOffsetX = { it },
                         animationSpec = tween(durationMillis = AnimationDurationMilliSeconds)
-                    ) + fadeIn(animationSpec = tween(durationMillis = AnimationDurationMilliSeconds))
+                    )
                 },
                 exitTransition = {
                     slideOutHorizontally(
                         targetOffsetX = { it },
                         animationSpec = tween(durationMillis = AnimationDurationMilliSeconds)
-                    ) + fadeOut(animationSpec = tween(durationMillis = AnimationDurationMilliSeconds))
+                    )
                 }
             ) { backStackEntry ->
                 AnimatedVisibilityScopeProvider(animatedVisibilityScope = this) {
